@@ -50,15 +50,21 @@
                 let directories = data.directories.results; // Start from "results"
                 let tableBody = document.getElementById("directory-list");
 
+                if (!directories) {
+                    console.error("Error: 'directories.results' is undefined.");
+                    tableBody.innerHTML = `<tr><td colspan="2" style="color:red;">Failed to load data. Invalid JSON structure.</td></tr>`;
+                    return;
+                }
+
                 Object.keys(directories).forEach(folder => {
+                    let folderData = directories[folder]; // Get folder object
                     let folderPath = `results/${folder}/`;
 
-                    console.log(`Processing folder: ${folder}`, directories[folder]); // Debugging output
+                    console.log(`Processing folder: ${folder}`, folderData); // Debugging output
 
-                    let files = directories[folder].files.length > 0
-                        ? directories[folder].files
-                              .map(file => `<a href="./${file}" target="_blank">${file.split("/").pop()}</a>`)
-                              .join("<br>")
+                    // Check if "files" key exists and is an array
+                    let files = (folderData && Array.isArray(folderData.files))
+                        ? folderData.files.map(file => `<a href="./${file}" target="_blank">${file.split("/").pop()}</a>`).join("<br>")
                         : "No HTML reports found";
 
                     console.log(`Found files for ${folder}:`, files); // Debugging output
