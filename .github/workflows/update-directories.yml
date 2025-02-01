@@ -24,20 +24,19 @@ jobs:
             dirname=$(basename "$dir")
             fullpath=$(echo "$dir" | sed 's|^\./||')
 
-            lang_part=$(echo "$dirname" | awk -F'--' '{print $1}')
-            slug_part=$(echo "$dirname" | awk -F'--' '{print $2}')
+            # Extract language & slug using `--` separator
+            lang_part=$(echo "$dirname" | cut -d'--' -f1)
+            slug_part=$(echo "$dirname" | cut -d'--' -f2-)
 
-            if [[ -z "$slug_part" ]]; then
-              slug_part=$lang_part
-              lang_part="blog"
-            fi
-
+            # Ensure "blog" is correctly placed after the language prefix
             if [[ "$lang_part" == "blog" ]]; then
-              base_url="https://toaglobal.com/blog"
+              base_url="https://toaglobal.com"
             else
               base_url="https://toaglobal.com/$lang_part"
+              slug_part="blog/$slug_part"
             fi
 
+            # Construct the full URL
             page_url="$base_url/$slug_part/"
 
             echo "    \"$dirname\": {" >> directories.json
@@ -63,5 +62,5 @@ jobs:
           git fetch origin
           git checkout main
           git add directories.json
-          git commit -m "Fix JSON structure for folder mapping [skip ci]" || exit 0
+          git commit -m "Fix URL formatting for multilingual pages [skip ci]" || exit 0
           git push origin main
