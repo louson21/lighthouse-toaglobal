@@ -46,39 +46,24 @@
         fetch('directories.json')
             .then(response => response.json())
             .then(data => {
-                console.log("Fetched Data:", data); // Debugging output
-                let directories = data.directories; // Start at root level
-                let resultsDir = directories.results; // Get "results" folder
+                console.log("Fetched Data:", data);
+                let directories = data.directories.results;
                 let tableBody = document.getElementById("directory-list");
-
-                if (!resultsDir || typeof resultsDir !== 'object') {
-                    console.error("Error: 'results' folder is missing.");
-                    tableBody.innerHTML = `<tr><td colspan="2" style="color:red;">Failed to load data. Check JSON structure.</td></tr>`;
-                    return;
-                }
-
-                // Loop through each subfolder inside "results/"
-                Object.keys(directories).forEach(folderPath => {
-                    if (folderPath.startsWith("results/") && folderPath !== "results") {  
-                        let folderName = folderPath.replace("results/", ""); // Remove "results/" prefix
-                        let folderData = directories[folderPath];
-
-                        console.log(`Processing folder: ${folderName}`, folderData); // Debugging output
-
-                        // Check if "files" key exists and is an array
-                        let files = (folderData && folderData.files && Array.isArray(folderData.files))
-                            ? folderData.files.map(file => `<a href="./${file}" target="_blank">${file.split("/").pop()}</a>`).join("<br>")
-                            : "No HTML reports found";
-
-                        console.log(`Found files for ${folderName}:`, files); // Debugging output
-
-                        let row = `<tr>
-                            <td><a href="./${folderPath}/">${folderName}</a></td>
-                            <td class="file-links">${files}</td>
-                        </tr>`;
-                        
-                        tableBody.innerHTML += row;
-                    }
+    
+                Object.keys(directories).forEach(folder => {
+                    let folderData = directories[folder];
+                    let pageUrl = folderData.url || "#";
+    
+                    let files = (folderData.files && Array.isArray(folderData.files))
+                        ? folderData.files.map(file => `<a href="./${file}" target="_blank">${file.split("/").pop()}</a>`).join("<br>")
+                        : "No HTML reports found";
+    
+                    let row = `<tr>
+                        <td><a href="${pageUrl}" target="_blank">${folder.replace(/--/g, " → ")}</a></td>
+                        <td class="file-links">${files}</td>
+                    </tr>`;
+                    
+                    tableBody.innerHTML += row;
                 });
             })
             .catch(error => {
