@@ -1,27 +1,23 @@
-# TOA Global Lighthouse Reports Repository
+# 🚀 TOA Global Lighthouse Reports
 
-## Overview
-This GitHub repository is dedicated to storing and managing Lighthouse performance results for TOA Global. It helps track and compare website performance metrics over time to ensure continuous optimization.
+This repository stores Lighthouse performance reports for TOA Global's pages.
 
-## Recent Changes
-- **Updated Columns**: The previous columns for `Desktop` and `Mobile` have been replaced with `Before` and `After`.
-- **Combined Reports in Cells**: Each cell now contains both `Desktop` and `Mobile` reports under `Before` and `After`.
-- **Date Added**: The report date is now displayed after the external link icon but is not part of the clickable link.
-- **Improved External Link Icon**: The icon now correctly matches the color of the link.
+## 📊 Access the Reports
 
-## File Modifications
-- **index.html**: Structure updated to include `Before` and `After` comparison instead of separate Desktop and Mobile columns.
-- **CSS Enhancements**: Adjusted the external link icon to match link colors.
+To view the latest Lighthouse reports, visit:
 
-## Purpose
-- Maintain a history of TOA Global’s Lighthouse reports.
-- Track improvements in website performance over time.
-- Facilitate performance monitoring and optimization efforts.
+🔗 **[Lighthouse Reports Dashboard](https://louson21.github.io/lighthouse-toaglobal/index.html)**
 
-## Next Steps
-- Ensure dynamic generation of Lighthouse reports in PHP.
-- Allow users to upload and compare reports dynamically.
-- Implement an API to fetch real-time performance data.
+This page lists all scanned pages along with their before/after performance reports.
 
-For any feedback or improvements, feel free to suggest changes!
+## 📖 How It Works
 
+1. The reports are automatically generated and stored inside the `/results/` folder.
+2. Each page's performance is tracked over time.
+3. The table dynamically updates as new reports are added.
+
+## 🔄 Updating Reports
+
+- The repository runs a GitHub Action that scans `/results/` and updates `directories.json`.
+- The `index.html` file dynamically pulls data from `directories.json` to display the reports.
+- The repo owner should upload Lighthouse-generated HTML report file.
