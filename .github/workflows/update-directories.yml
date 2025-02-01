@@ -25,25 +25,13 @@ jobs:
             dirname=$(echo "$dir" | sed 's|^\./||')  # Remove leading "./"
             echo "    \"$dirname\": {" >> directories.json
             
-            # List files in the directory
-            echo '      "files": [' >> directories.json
-            files=$(find "$dir" -maxdepth 1 -type f | sed 's|^\./||' | jq -R -s -c 'split("\n")[:-1]')
-            if [ -z "$files" ]; then
-              echo '      []' >> directories.json
-            else
-              echo "      $files" >> directories.json
-            fi
-            echo '      ],' >> directories.json
+            # List files in the directory (fixing structure)
+            files=$(find "$dir" -maxdepth 1 -type f -name "*.html" | sed 's|^\./||' | jq -R -s -c 'split("\n")[:-1]')
+            echo "      \"files\": $files," >> directories.json
             
-            # List subdirectories
-            echo '      "subdirectories": [' >> directories.json
+            # List subdirectories (fixing structure)
             subdirs=$(find "$dir" -mindepth 1 -maxdepth 1 -type d | sed 's|^\./||' | jq -R -s -c 'split("\n")[:-1]')
-            if [ -z "$subdirs" ]; then
-              echo '      []' >> directories.json
-            else
-              echo "      $subdirs" >> directories.json
-            fi
-            echo '      ]' >> directories.json
+            echo "      \"subdirectories\": $subdirs" >> directories.json
 
             echo "    }," >> directories.json
           done
@@ -64,5 +52,5 @@ jobs:
           git fetch origin
           git checkout main
           git add directories.json
-          git commit -m "Auto-update directories.json with recursive structure [skip ci]" || exit 0
+          git commit -m "Fix JSON structure in directories.json [skip ci]" || exit 0
           git push origin main
