@@ -19,15 +19,15 @@ jobs:
       - name: Generate directories.json
         run: |
           echo '{ "directories": {' > directories.json
-          
+
           # Scan only inside /results/ directory
           find results -type d | while read -r dir; do
             dirname=$(basename "$dir")  # Extract just the folder name
             fullpath=$(echo "$dir" | sed 's|^\./||')  # Remove leading "./"
 
-            # Extract language & page slug using `--` separator
-            lang_part=$(echo "$dirname" | cut -d'--' -f1)
-            slug_part=$(echo "$dirname" | cut -d'--' -f2-)
+            # Extract language & page slug using `awk`
+            lang_part=$(echo "$dirname" | awk -F'--' '{print $1}')
+            slug_part=$(echo "$dirname" | awk -F'--' '{print $2}')
 
             # Determine base domain
             if [[ "$lang_part" == "blog" ]]; then
