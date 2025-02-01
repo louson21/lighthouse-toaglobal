@@ -3,7 +3,7 @@ name: Update Directories and Files JSON
 on:
   push:
     branches:
-      - main  # Change this to your default branch if it's not 'main'
+      - main  # Change this if your default branch is different
   workflow_dispatch:
 
 jobs:
@@ -17,14 +17,14 @@ jobs:
         run: |
           echo '{ "directories": {' > directories.json
           
-          # Recursive function to scan directories and subdirectories
-          find . -type d ! -path "./.git*" | while read -r dir; do
+          # Scan only inside /results/ directory
+          find results -type d | while read -r dir; do
             dirname=$(echo "$dir" | sed 's|^\./||')  # Remove leading "./"
             echo "    \"$dirname\": {" >> directories.json
             
             # List files in the directory
             echo '      "files": [' >> directories.json
-            find "$dir" -maxdepth 1 -type f ! -name "directories.json" | sed 's|^\./||' | jq -R -s -c 'split("\n")[:-1]' >> directories.json
+            find "$dir" -maxdepth 1 -type f | sed 's|^\./||' | jq -R -s -c 'split("\n")[:-1]' >> directories.json
             echo '      ],' >> directories.json
             
             # List subdirectories
@@ -38,11 +38,11 @@ jobs:
           echo '  }' >> directories.json
           echo '}' >> directories.json
 
-      - name: Push Changes
-      run: |
-        git config --global user.name "github-actions"
-        git config --global user.email "github-actions@github.com"
-        git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ github.repository }}.git
-        git add directories.json
-        git commit -m "Auto-update directories.json with recursive structure [skip ci]" || exit 0
-        git push origin main
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ github.repository }}.git
+          git add directories.json
+          git commit -m "Auto-update directories.json with recursive structure [skip ci]" || exit 0
+          git push origin main
