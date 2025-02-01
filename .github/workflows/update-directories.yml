@@ -3,11 +3,11 @@ name: Update Directories and Files JSON
 on:
   push:
     branches:
-      - main  # Change if your default branch is different
+      - main
   workflow_dispatch:
 
 permissions:
-  contents: write  # Allows GitHub Actions to push changes
+  contents: write
 
 jobs:
   update-json:
@@ -22,23 +22,38 @@ jobs:
           
           # Scan only inside /results/ directory
           find results -type d | while read -r dir; do
-            dirname=$(echo "$dir" | sed 's|^\./||')  # Remove leading "./"
-            echo "    \"$dirname\": {" >> directories.json
-            
-            # List files in the directory (fixing structure)
+            dirname=$(basename "$dir")  # Extract just the folder name
+            fullpath=$(echo "$dir" | sed 's|^\./||')  # Remove leading "./"
+
+            # Extract language & page slug using `--` separator
+            lang_part=$(echo "$dirname" | cut -d'--' -f1)
+            slug_part=$(echo "$dirname" | cut -d'--' -f2-)
+
+            # Determine base domain
+            if [[ "$lang_part" == "blog" ]]; then
+              base_url="https://toaglobal.com"
+            else
+              base_url="https://toaglobal.com/$lang_part"
+            fi
+
+            # Construct the full URL
+            page_url="$base_url/$slug_part/"
+
+            echo "    \"$fullpath\": {" >> directories.json
+            echo "      \"url\": \"$page_url\"," >> directories.json
+
+            # List files in the directory
             files=$(find "$dir" -maxdepth 1 -type f -name "*.html" | sed 's|^\./||' | jq -R -s -c 'split("\n")[:-1]')
             echo "      \"files\": $files," >> directories.json
-            
-            # List subdirectories (fixing structure)
+
+            # List subdirectories
             subdirs=$(find "$dir" -mindepth 1 -maxdepth 1 -type d | sed 's|^\./||' | jq -R -s -c 'split("\n")[:-1]')
             echo "      \"subdirectories\": $subdirs" >> directories.json
 
             echo "    }," >> directories.json
           done
 
-          # Remove last comma from JSON (fix JSON structure)
-          sed -i '$ s/,$//' directories.json
-
+          sed -i '$ s/,$//' directories.json  # Remove last comma to fix JSON
           echo '  }' >> directories.json
           echo '}' >> directories.json
 
@@ -52,5 +67,5 @@ jobs:
           git fetch origin
           git checkout main
           git add directories.json
-          git commit -m "Fix JSON structure in directories.json [skip ci]" || exit 0
+          git commit -m "Auto-update directories.json with structured URLs [skip ci]" || exit 0
           git push origin main
