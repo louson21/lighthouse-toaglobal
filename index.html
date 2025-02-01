@@ -44,20 +44,30 @@
 
     <script>
         fetch('directories.json')
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
             .then(data => {
+                console.log("Fetched Data:", data); // Debugging output
                 let directories = data.directories;
                 let tableBody = document.getElementById("directory-list");
 
                 Object.keys(directories).forEach(folder => {
-                    if (folder.startsWith("results/") && !folder.includes("/")) {  // Ensure only top-level folders in /results/
+                    if (folder.startsWith("results/") && folder !== "results") {  // Ensure only subfolders of /results/
                         let folderName = folder.replace("results/", "");
                         let folderPath = `results/${folderName}/`;
+
+                        console.log(`Processing folder: ${folderName}`); // Debugging output
 
                         let files = directories[folder].files
                             .filter(file => file.endsWith(".html")) // Only show HTML files
                             .map(file => `<a href="./${file}" target="_blank">${file.split("/").pop()}</a>`)
                             .join("<br>");
+
+                        console.log(`Found files for ${folderName}:`, files); // Debugging output
 
                         let row = `<tr>
                             <td><a href="./${folderPath}">${folderName}</a></td>
@@ -68,7 +78,10 @@
                     }
                 });
             })
-            .catch(error => console.error('Error loading directory list:', error));
+            .catch(error => {
+                console.error("Error loading directory list:", error);
+                document.getElementById("directory-list").innerHTML = `<tr><td colspan="2" style="color:red;">Failed to load data. Check console for details.</td></tr>`;
+            });
     </script>
 </body>
 </html>
