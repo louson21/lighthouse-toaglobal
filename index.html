@@ -4,79 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TOA Global - Lighthouse Reports</title>
-    <style>
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            text-align: center;
-            background-color: #ffffff;
-            margin: 0;
-            padding: 0;
-        }
-        
-        .header {
-            background-color: #ffffff;
-            color: #4A007B;
-            padding: 20px 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .header img {
-            max-width: 180px;
-        }
-
-        h2 {
-            color: #4A007B;
-            margin-top: 20px;
-        }
-
-        table {
-            width: 80%;
-            margin: 20px auto;
-            border-collapse: collapse;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-            font-size: 14px;
-        }
-
-        th {
-            background-color: #4A007B;
-            color: white;
-        }
-
-        .file-links a {
-            display: block;
-            margin-bottom: 5px;
-            color: #4A007B;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .file-links a:hover {
-            text-decoration: underline;
-        }
-
-        .external-link::after {
-            content: '↗';
-            font-size: 12px;
-            color: #4A007B;
-            margin-left: 4px;
-        }
-
-        .number-column {
-            width: 5%;
-            text-align: center;
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
@@ -87,7 +15,7 @@
         </a>
     </div>
 
-    <h2>Lighthouse Performance Reports</h2>
+    <h1>Lighthouse Performance Reports</h1>
 
     <table>
         <thead>
@@ -101,52 +29,7 @@
         </tbody>
     </table>
 
-    <script>
-        fetch('directories.json')
-            .then(response => response.json())
-            .then(data => {
-                console.log("Fetched Data:", data);
-                let directories = data.directories.results;
-                let tableBody = document.getElementById("directory-list");
-
-                if (!directories || typeof directories !== 'object') {
-                    console.error("Error: 'results' folder is missing or incorrectly structured.");
-                    tableBody.innerHTML = `<tr><td colspan="3" style="color:red;">Failed to load data. Check JSON structure.</td></tr>`;
-                    return;
-                }
-
-                let counter = 1; // Initialize numbering
-
-                Object.keys(directories).forEach(folder => {
-                    let folderData = directories[folder];
-
-                    // Skip invalid folder entries
-                    if (!folderData || typeof folderData !== 'object' || !folderData.url) {
-                        console.warn(`Skipping invalid folder: ${folder}`, folderData);
-                        return;
-                    }
-
-                    let pageUrl = folderData.url || "#"; // Use "#" if no URL exists
-
-                    let files = (folderData.files && Array.isArray(folderData.files))
-                        ? folderData.files.map(file => `<a href="./${file}" target="_blank">${file.split("/").pop()}</a>`).join("<br>")
-                        : "No Lighthouse reports found";
-
-                    let row = `<tr>
-                        <td class="number-column">${counter}</td>
-                        <td><a href="${pageUrl}" target="_blank" class="external-link">${folder.replace(/--/g, " → ")}</a></td>
-                        <td class="file-links">${files}</td>
-                    </tr>`;
-
-                    tableBody.innerHTML += row;
-                    counter++; // Increment counter
-                });
-            })
-            .catch(error => {
-                console.error("Error loading directory list:", error);
-                document.getElementById("directory-list").innerHTML = `<tr><td colspan="3" style="color:red;">Failed to load data. Check console for details.</td></tr>`;
-            });
-    </script>
+    <script src="assets/js/script.js"></script>
 
 </body>
 </html>
