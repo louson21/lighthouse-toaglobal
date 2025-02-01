@@ -24,9 +24,9 @@ jobs:
             dirname=$(basename "$dir")
             fullpath=$(echo "$dir" | sed 's|^\./||')
 
-            # Extract language & slug using `--` separator
-            lang_part=$(echo "$dirname" | cut -d'--' -f1)
-            slug_part=$(echo "$dirname" | cut -d'--' -f2-)
+            # Extract language & slug using `awk` instead of `cut`
+            lang_part=$(echo "$dirname" | awk -F'--' '{print $1}')
+            slug_part=$(echo "$dirname" | awk -F'--' '{print $2}')
 
             # Ensure "blog" is correctly placed after the language prefix
             if [[ "$lang_part" == "blog" ]]; then
