@@ -3,8 +3,11 @@ name: Update Directories and Files JSON
 on:
   push:
     branches:
-      - main  # Change this if your default branch is different
+      - main  # Change if your default branch is different
   workflow_dispatch:
+
+permissions:
+  contents: write  # Allows GitHub Actions to push changes
 
 jobs:
   update-json:
@@ -24,16 +27,29 @@ jobs:
             
             # List files in the directory
             echo '      "files": [' >> directories.json
-            find "$dir" -maxdepth 1 -type f | sed 's|^\./||' | jq -R -s -c 'split("\n")[:-1]' >> directories.json
+            files=$(find "$dir" -maxdepth 1 -type f | sed 's|^\./||' | jq -R -s -c 'split("\n")[:-1]')
+            if [ -z "$files" ]; then
+              echo '      []' >> directories.json
+            else
+              echo "      $files" >> directories.json
+            fi
             echo '      ],' >> directories.json
             
             # List subdirectories
             echo '      "subdirectories": [' >> directories.json
-            find "$dir" -mindepth 1 -maxdepth 1 -type d | sed 's|^\./||' | jq -R -s -c 'split("\n")[:-1]' >> directories.json
+            subdirs=$(find "$dir" -mindepth 1 -maxdepth 1 -type d | sed 's|^\./||' | jq -R -s -c 'split("\n")[:-1]')
+            if [ -z "$subdirs" ]; then
+              echo '      []' >> directories.json
+            else
+              echo "      $subdirs" >> directories.json
+            fi
             echo '      ]' >> directories.json
-            
+
             echo "    }," >> directories.json
           done
+
+          # Remove last comma from JSON (fix JSON structure)
+          sed -i '$ s/,$//' directories.json
 
           echo '  }' >> directories.json
           echo '}' >> directories.json
@@ -45,6 +61,8 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
           git remote set-url origin https://x-access-token:${GH_PAT}@github.com/${{ github.repository }}.git
+          git fetch origin
+          git checkout main
           git add directories.json
           git commit -m "Auto-update directories.json with recursive structure [skip ci]" || exit 0
           git push origin main
