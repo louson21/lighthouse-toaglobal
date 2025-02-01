@@ -1,13 +1,7 @@
-{ "directories": {
-    "results": {
-      "url": "https://toaglobal.com/results//",
-      "files": [],
-      "subdirectories": ["results/blog--ai-in-accounting-pros-and-cons-of-using-chatgpt"]
-    },
-    "results/blog--ai-in-accounting-pros-and-cons-of-using-chatgpt": {
+{ "directories": {"results": {
+    "blog--ai-in-accounting-pros-and-cons-of-using-chatgpt": {
       "url": "https://toaglobal.com/ai-in-accounting-pros-and-cons-of-using-chatgpt/",
       "files": ["results/blog--ai-in-accounting-pros-and-cons-of-using-chatgpt/toaglobal.com_2025-02-01_20-08-06.html","results/blog--ai-in-accounting-pros-and-cons-of-using-chatgpt/toaglobal.com_2025-02-01_12-55-29.html"],
       "subdirectories": []
     }
-  }
-}
+  }}}
