@@ -44,34 +44,32 @@
 
     <script>
         fetch('directories.json')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.json();
-            })
+            .then(response => response.json())
             .then(data => {
                 console.log("Fetched Data:", data); // Debugging output
                 let directories = data.directories;
                 let tableBody = document.getElementById("directory-list");
-
+    
                 Object.keys(directories).forEach(folder => {
-                    if (folder.startsWith("results/") && folder !== "results") {  // Ensure only subfolders of /results/
+                    if (folder.startsWith("results/") && folder !== "results") {  // Only subfolders of /results/
                         let folderName = folder.replace("results/", "");
                         let folderPath = `results/${folderName}/`;
-
-                        console.log(`Processing folder: ${folderName}`); // Debugging output
-
-                        let files = directories[folder].files
-                            .filter(file => file.endsWith(".html")) // Only show HTML files
-                            .map(file => `<a href="./${file}" target="_blank">${file.split("/").pop()}</a>`)
-                            .join("<br>");
-
+    
+                        console.log(`Processing folder: ${folderName}`, directories[folder]); // Debugging output
+    
+                        // Check if files exist before trying to filter them
+                        let files = Array.isArray(directories[folder].files)
+                            ? directories[folder].files
+                                  .filter(file => typeof file === "string" && file.endsWith(".html")) // Ensure only strings are processed
+                                  .map(file => `<a href="./${file}" target="_blank">${file.split("/").pop()}</a>`)
+                                  .join("<br>")
+                            : "No HTML reports found";
+    
                         console.log(`Found files for ${folderName}:`, files); // Debugging output
-
+    
                         let row = `<tr>
                             <td><a href="./${folderPath}">${folderName}</a></td>
-                            <td class="file-links">${files || "No HTML reports found"}</td>
+                            <td class="file-links">${files}</td>
                         </tr>`;
                         
                         tableBody.innerHTML += row;
