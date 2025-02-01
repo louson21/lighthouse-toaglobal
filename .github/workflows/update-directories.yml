@@ -1,0 +1,47 @@
+name: Update Directories and Files JSON
+
+on:
+  push:
+    branches:
+      - main  # Change this to your default branch if it's not 'main'
+  workflow_dispatch:
+
+jobs:
+  update-json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Generate directories.json
+        run: |
+          echo '{ "directories": {' > directories.json
+          
+          # Recursive function to scan directories and subdirectories
+          find . -type d ! -path "./.git*" | while read -r dir; do
+            dirname=$(echo "$dir" | sed 's|^\./||')  # Remove leading "./"
+            echo "    \"$dirname\": {" >> directories.json
+            
+            # List files in the directory
+            echo '      "files": [' >> directories.json
+            find "$dir" -maxdepth 1 -type f ! -name "directories.json" | sed 's|^\./||' | jq -R -s -c 'split("\n")[:-1]' >> directories.json
+            echo '      ],' >> directories.json
+            
+            # List subdirectories
+            echo '      "subdirectories": [' >> directories.json
+            find "$dir" -mindepth 1 -maxdepth 1 -type d | sed 's|^\./||' | jq -R -s -c 'split("\n")[:-1]' >> directories.json
+            echo '      ]' >> directories.json
+            
+            echo "    }," >> directories.json
+          done
+
+          echo '  }' >> directories.json
+          echo '}' >> directories.json
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add directories.json
+          git commit -m "Auto-update directories.json with recursive structure [skip ci]" || exit 0
+          git push
