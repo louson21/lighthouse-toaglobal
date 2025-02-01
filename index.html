@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Available Directories & Files</title>
+    <title>Results - Lighthouse Reports</title>
     <style>
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -22,22 +22,20 @@
         th {
             background-color: #f4f4f4;
         }
-        .subdirectory {
-            padding-left: 20px;
-            font-style: italic;
+        .file-links a {
+            display: block;
+            margin-bottom: 5px;
         }
     </style>
 </head>
 <body>
-    <h2>Available Directories & Files</h2>
+    <h2>Results - Lighthouse Reports</h2>
 
     <table>
         <thead>
             <tr>
-                <th>#</th>
-                <th>Directory</th>
-                <th>Files</th>
-                <th>Subdirectories</th>
+                <th>Folder Name</th>
+                <th>HTML Reports</th>
             </tr>
         </thead>
         <tbody id="directory-list">
@@ -50,38 +48,23 @@
             .then(data => {
                 let directories = data.directories;
                 let tableBody = document.getElementById("directory-list");
-                let index = 1;
 
-                function renderDirectory(directory, prefix = "") {
-                    let dirData = directories[directory];
-                    if (!dirData) return;
+                Object.keys(directories).forEach(folder => {
+                    if (folder.startsWith("results/") && !folder.includes("/")) {  // Ensure only top-level folders in /results/
+                        let folderName = folder.replace("results/", "");
+                        let folderPath = `results/${folderName}/`;
 
-                    let files = dirData.files.length > 0
-                        ? dirData.files.map(file => `<a href="./${directory}/${file}">${file}</a>`).join("<br>")
-                        : "No files";
+                        let files = directories[folder].files
+                            .filter(file => file.endsWith(".html")) // Only show HTML files
+                            .map(file => `<a href="./${file}" target="_blank">${file.split("/").pop()}</a>`)
+                            .join("<br>");
 
-                    let subdirectories = dirData.subdirectories.length > 0
-                        ? dirData.subdirectories.map(subdir => `<span class="subdirectory">${subdir}</span>`).join("<br>")
-                        : "None";
-
-                    let row = `<tr>
-                        <td>${index}</td>
-                        <td><a href="./${directory}/">${directory}</a></td>
-                        <td>${files}</td>
-                        <td>${subdirectories}</td>
-                    </tr>`;
-                    tableBody.innerHTML += row;
-                    index++;
-
-                    // Recursively render subdirectories
-                    dirData.subdirectories.forEach(subdir => {
-                        renderDirectory(directory + "/" + subdir, prefix + "&nbsp;&nbsp;");
-                    });
-                }
-
-                Object.keys(directories).forEach(dir => {
-                    if (!dir.includes("/")) { // Only render top-level directories first
-                        renderDirectory(dir);
+                        let row = `<tr>
+                            <td><a href="./${folderPath}">${folderName}</a></td>
+                            <td class="file-links">${files || "No HTML reports found"}</td>
+                        </tr>`;
+                        
+                        tableBody.innerHTML += row;
                     }
                 });
             })
