@@ -18,44 +18,40 @@ jobs:
 
       - name: Generate directories.json
         run: |
-          echo '{ "directories": {' > directories.json
+          echo '{ "directories": {"results": {' > directories.json
 
-          # Scan only inside /results/ directory
-          find results -type d | while read -r dir; do
-            dirname=$(basename "$dir")  # Extract just the folder name
-            fullpath=$(echo "$dir" | sed 's|^\./||')  # Remove leading "./"
+          find results -mindepth 1 -type d | while read -r dir; do
+            dirname=$(basename "$dir")
+            fullpath=$(echo "$dir" | sed 's|^\./||')
 
-            # Extract language & page slug using `awk`
             lang_part=$(echo "$dirname" | awk -F'--' '{print $1}')
             slug_part=$(echo "$dirname" | awk -F'--' '{print $2}')
 
-            # Determine base domain
+            if [[ -z "$slug_part" ]]; then
+              slug_part=$lang_part
+              lang_part="blog"
+            fi
+
             if [[ "$lang_part" == "blog" ]]; then
               base_url="https://toaglobal.com"
             else
               base_url="https://toaglobal.com/$lang_part"
             fi
 
-            # Construct the full URL
             page_url="$base_url/$slug_part/"
 
-            echo "    \"$fullpath\": {" >> directories.json
+            echo "    \"$dirname\": {" >> directories.json
             echo "      \"url\": \"$page_url\"," >> directories.json
 
-            # List files in the directory
             files=$(find "$dir" -maxdepth 1 -type f -name "*.html" | sed 's|^\./||' | jq -R -s -c 'split("\n")[:-1]')
             echo "      \"files\": $files," >> directories.json
 
-            # List subdirectories
-            subdirs=$(find "$dir" -mindepth 1 -maxdepth 1 -type d | sed 's|^\./||' | jq -R -s -c 'split("\n")[:-1]')
-            echo "      \"subdirectories\": $subdirs" >> directories.json
-
+            echo "      \"subdirectories\": []" >> directories.json
             echo "    }," >> directories.json
           done
 
-          sed -i '$ s/,$//' directories.json  # Remove last comma to fix JSON
-          echo '  }' >> directories.json
-          echo '}' >> directories.json
+          sed -i '$ s/,$//' directories.json
+          echo '  }}}' >> directories.json
 
       - name: Commit and Push Changes
         env:
@@ -67,5 +63,5 @@ jobs:
           git fetch origin
           git checkout main
           git add directories.json
-          git commit -m "Auto-update directories.json with structured URLs [skip ci]" || exit 0
+          git commit -m "Fix JSON structure for folder mapping [skip ci]" || exit 0
           git push origin main
