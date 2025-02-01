@@ -1,0 +1,17 @@
+{
+    "directories": {
+      "reports": [
+        "report1.html",
+        "report2.html"
+      ],
+      "lighthouse-logs": [
+        "log1.json",
+        "log2.json"
+      ],
+      "2025-results": [
+        "index.html",
+        "metrics.json"
+      ],
+      "archives": []
+    }
+  }
