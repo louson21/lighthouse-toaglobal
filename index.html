@@ -46,13 +46,26 @@
         fetch('directories.json')
             .then(response => response.json())
             .then(data => {
-                console.log("Fetched Data:", data);
+                console.log("Fetched Data:", data); // Debugging output
                 let directories = data.directories.results;
                 let tableBody = document.getElementById("directory-list");
     
+                if (!directories || typeof directories !== 'object') {
+                    console.error("Error: 'results' folder is missing or incorrectly structured.");
+                    tableBody.innerHTML = `<tr><td colspan="2" style="color:red;">Failed to load data. Check JSON structure.</td></tr>`;
+                    return;
+                }
+    
                 Object.keys(directories).forEach(folder => {
                     let folderData = directories[folder];
-                    let pageUrl = folderData.url || "#";
+    
+                    // Skip invalid folder entries
+                    if (!folderData || typeof folderData !== 'object' || !folderData.url) {
+                        console.warn(`Skipping invalid folder: ${folder}`, folderData);
+                        return;
+                    }
+    
+                    let pageUrl = folderData.url || "#"; // Use "#" if no URL exists
     
                     let files = (folderData.files && Array.isArray(folderData.files))
                         ? folderData.files.map(file => `<a href="./${file}" target="_blank">${file.split("/").pop()}</a>`).join("<br>")
