@@ -33,7 +33,7 @@ jobs:
             fi
 
             if [[ "$lang_part" == "blog" ]]; then
-              base_url="https://toaglobal.com"
+              base_url="https://toaglobal.com/blog"
             else
               base_url="https://toaglobal.com/$lang_part"
             fi
