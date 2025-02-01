@@ -47,33 +47,28 @@
             .then(response => response.json())
             .then(data => {
                 console.log("Fetched Data:", data); // Debugging output
-                let directories = data.directories;
+                let directories = data.directories.results; // Start from "results"
                 let tableBody = document.getElementById("directory-list");
-    
+
                 Object.keys(directories).forEach(folder => {
-                    if (folder.startsWith("results/") && folder !== "results") {  // Only subfolders of /results/
-                        let folderName = folder.replace("results/", "");
-                        let folderPath = `results/${folderName}/`;
-    
-                        console.log(`Processing folder: ${folderName}`, directories[folder]); // Debugging output
-    
-                        // Check if files exist before trying to filter them
-                        let files = Array.isArray(directories[folder].files)
-                            ? directories[folder].files
-                                  .filter(file => typeof file === "string" && file.endsWith(".html")) // Ensure only strings are processed
-                                  .map(file => `<a href="./${file}" target="_blank">${file.split("/").pop()}</a>`)
-                                  .join("<br>")
-                            : "No HTML reports found";
-    
-                        console.log(`Found files for ${folderName}:`, files); // Debugging output
-    
-                        let row = `<tr>
-                            <td><a href="./${folderPath}">${folderName}</a></td>
-                            <td class="file-links">${files}</td>
-                        </tr>`;
-                        
-                        tableBody.innerHTML += row;
-                    }
+                    let folderPath = `results/${folder}/`;
+
+                    console.log(`Processing folder: ${folder}`, directories[folder]); // Debugging output
+
+                    let files = directories[folder].files.length > 0
+                        ? directories[folder].files
+                              .map(file => `<a href="./${file}" target="_blank">${file.split("/").pop()}</a>`)
+                              .join("<br>")
+                        : "No HTML reports found";
+
+                    console.log(`Found files for ${folder}:`, files); // Debugging output
+
+                    let row = `<tr>
+                        <td><a href="./${folderPath}">${folder}</a></td>
+                        <td class="file-links">${files}</td>
+                    </tr>`;
+                    
+                    tableBody.innerHTML += row;
                 });
             })
             .catch(error => {
