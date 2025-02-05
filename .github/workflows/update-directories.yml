@@ -16,11 +16,12 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Generate directories.json
+      - name: Generate directories.json (Sorted by Latest First)
         run: |
           echo '{ "directories": {"results": {' > directories.json
 
-          find results -mindepth 1 -type d | while read -r dir; do
+          # Find and sort directories by latest modification date
+          find results -mindepth 1 -type d -printf "%T@ %p\n" | sort -nr | cut -d' ' -f2- | while read -r dir; do
             dirname=$(basename "$dir")
             fullpath=$(echo "$dir" | sed 's|^\./||')
 
@@ -67,5 +68,5 @@ jobs:
           git fetch origin
           git checkout main
           git add directories.json
-          git commit -m "Fix dynamic URL structure for blog/resources/events [skip ci]" || exit 0
+          git commit -m "Sort blog entries by latest first [skip ci]" || exit 0
           git push origin main
