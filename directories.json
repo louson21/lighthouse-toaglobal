@@ -34,6 +34,11 @@
       "files": ["results/blog--ai-in-accounting-pros-and-cons-of-using-chatgpt/toaglobal.com_2025-02-02_03-12-09.html","results/blog--ai-in-accounting-pros-and-cons-of-using-chatgpt/toaglobal.com_2025-02-01_12-55-29.html"],
       "subdirectories": []
     },
+    "resource--remote-team": {
+      "url": "https://toaglobal.com/resource/blog/remote-team/",
+      "files": ["results/resource--remote-team/toaglobal.com_2025-02-05_23-15-40-mobile-before.html","results/resource--remote-team/toaglobal.com_2025-02-06_02-44-48-mobile-after.html"],
+      "subdirectories": []
+    },
     "au--blog--accounting-firm-positioning": {
       "url": "https://toaglobal.com/au/blog/accounting-firm-positioning/",
       "files": ["results/au--blog--accounting-firm-positioning/toaglobal.com_2025-02-05_14-34-28.html"],
