@@ -1,27 +1,7 @@
 { "directories": {"results": {
-    "au--blog--9-accounting-tasks-to-automate-for-improved-efficiency": {
-      "url": "https://toaglobal.com/au/blog/9-accounting-tasks-to-automate-for-improved-efficiency/",
-      "files": ["results/au--blog--9-accounting-tasks-to-automate-for-improved-efficiency/toaglobal.com_2025-02-05_14-09-01-after.html","results/au--blog--9-accounting-tasks-to-automate-for-improved-efficiency/toaglobal.com_2025-02-02_04-04-31-before.html"],
-      "subdirectories": []
-    },
-    "au--blog--seo-for-accountants-a-compendium-of-21-proven-strategies-to-grow-your-practice": {
-      "url": "https://toaglobal.com/au/blog/seo-for-accountants-a-compendium-of-21-proven-strategies-to-grow-your-practice/",
-      "files": ["results/au--blog--seo-for-accountants-a-compendium-of-21-proven-strategies-to-grow-your-practice/toaglobal.com_2025-02-02_03-42-49-after.html"],
-      "subdirectories": []
-    },
     "blog--seo-for-accountants-a-compendium-of-21-proven-strategies-to-grow-your-practice": {
       "url": "https://toaglobal.com/blog/seo-for-accountants-a-compendium-of-21-proven-strategies-to-grow-your-practice/",
       "files": ["results/blog--seo-for-accountants-a-compendium-of-21-proven-strategies-to-grow-your-practice/toaglobal.com_2025-02-02_03-41-29-after.html"],
-      "subdirectories": []
-    },
-    "au--blog--accounting-firm-names-a-step-by-step-guide-for-seo-success": {
-      "url": "https://toaglobal.com/au/blog/accounting-firm-names-a-step-by-step-guide-for-seo-success/",
-      "files": ["results/au--blog--accounting-firm-names-a-step-by-step-guide-for-seo-success/toaglobal.com_2025-02-02_03-17-45-after.html"],
-      "subdirectories": []
-    },
-    "au--resource--retain-and-grow-top-accounting-talent": {
-      "url": "https://toaglobal.com/au/resource/retain-and-grow-top-accounting-talent/",
-      "files": ["results/au--resource--retain-and-grow-top-accounting-talent/toaglobal.com_2025-02-02_17-33-26.html","results/au--resource--retain-and-grow-top-accounting-talent/toaglobal.com_2025-02-02_16-37-39-before.html"],
       "subdirectories": []
     },
     "blog--essential-guide-to-the-sarbanes-oxley-act-sox": {
@@ -32,6 +12,26 @@
     "blog--ai-in-accounting-pros-and-cons-of-using-chatgpt": {
       "url": "https://toaglobal.com/blog/ai-in-accounting-pros-and-cons-of-using-chatgpt/",
       "files": ["results/blog--ai-in-accounting-pros-and-cons-of-using-chatgpt/toaglobal.com_2025-02-02_03-12-09.html","results/blog--ai-in-accounting-pros-and-cons-of-using-chatgpt/toaglobal.com_2025-02-01_12-55-29.html"],
+      "subdirectories": []
+    },
+    "au--resource--retain-and-grow-top-accounting-talent": {
+      "url": "https://toaglobal.com/au/resource/retain-and-grow-top-accounting-talent/",
+      "files": ["results/au--resource--retain-and-grow-top-accounting-talent/toaglobal.com_2025-02-02_17-33-26.html","results/au--resource--retain-and-grow-top-accounting-talent/toaglobal.com_2025-02-02_16-37-39-before.html"],
+      "subdirectories": []
+    },
+    "au--blog--seo-for-accountants-a-compendium-of-21-proven-strategies-to-grow-your-practice": {
+      "url": "https://toaglobal.com/au/blog/seo-for-accountants-a-compendium-of-21-proven-strategies-to-grow-your-practice/",
+      "files": ["results/au--blog--seo-for-accountants-a-compendium-of-21-proven-strategies-to-grow-your-practice/toaglobal.com_2025-02-02_03-42-49-after.html"],
+      "subdirectories": []
+    },
+    "au--blog--accounting-firm-names-a-step-by-step-guide-for-seo-success": {
+      "url": "https://toaglobal.com/au/blog/accounting-firm-names-a-step-by-step-guide-for-seo-success/",
+      "files": ["results/au--blog--accounting-firm-names-a-step-by-step-guide-for-seo-success/toaglobal.com_2025-02-02_03-17-45-after.html"],
+      "subdirectories": []
+    },
+    "au--blog--9-accounting-tasks-to-automate-for-improved-efficiency": {
+      "url": "https://toaglobal.com/au/blog/9-accounting-tasks-to-automate-for-improved-efficiency/",
+      "files": ["results/au--blog--9-accounting-tasks-to-automate-for-improved-efficiency/toaglobal.com_2025-02-05_14-09-01-after.html","results/au--blog--9-accounting-tasks-to-automate-for-improved-efficiency/toaglobal.com_2025-02-02_04-04-31-before.html"],
       "subdirectories": []
     }
   }}}
