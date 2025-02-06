@@ -21,7 +21,7 @@
     },
     "au--resource--retain-and-grow-top-accounting-talent": {
       "url": "https://toaglobal.com/au/resource/retain-and-grow-top-accounting-talent/",
-      "files": ["results/au--resource--retain-and-grow-top-accounting-talent/toaglobal.com_2025-02-02_17-33-26.html","results/au--resource--retain-and-grow-top-accounting-talent/toaglobal.com_2025-02-02_16-37-39-before.html"],
+      "files": ["results/au--resource--retain-and-grow-top-accounting-talent/toaglobal.com_2025-02-06_16-40-11-mobile-after.html","results/au--resource--retain-and-grow-top-accounting-talent/toaglobal.com_2025-02-02_16-37-39-before.html"],
       "subdirectories": []
     },
     "blog--essential-guide-to-the-sarbanes-oxley-act-sox": {
@@ -42,6 +42,11 @@
     "au--blog--accounting-firm-positioning": {
       "url": "https://toaglobal.com/au/blog/accounting-firm-positioning/",
       "files": ["results/au--blog--accounting-firm-positioning/toaglobal.com_2025-02-05_14-34-28.html"],
+      "subdirectories": []
+    },
+    "resource--scale-and-grow-accounting-firm": {
+      "url": "https://toaglobal.com/resource/blog/scale-and-grow-accounting-firm/",
+      "files": ["results/resource--scale-and-grow-accounting-firm/toaglobal.com_2025-02-06_16-59-55-mobile-before.html"],
       "subdirectories": []
     }
   }}}
