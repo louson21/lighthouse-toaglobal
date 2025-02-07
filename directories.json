@@ -1,4 +1,9 @@
 { "directories": {"results": {
+    "au--resource--talent-insights-report": {
+      "url": "https://toaglobal.com/au/resource/talent-insights-report/",
+      "files": ["results/au--resource--talent-insights-report/toaglobal.com_2025-02-07_17-35-06-mobile-before.html","results/au--resource--talent-insights-report/toaglobal.com_2025-02-07_18-39-04-mobile-after.html"],
+      "subdirectories": []
+    },
     "au--blog--9-accounting-tasks-to-automate-for-improved-efficiency": {
       "url": "https://toaglobal.com/au/blog/9-accounting-tasks-to-automate-for-improved-efficiency/",
       "files": ["results/au--blog--9-accounting-tasks-to-automate-for-improved-efficiency/toaglobal.com_2025-02-05_14-09-01-after.html","results/au--blog--9-accounting-tasks-to-automate-for-improved-efficiency/toaglobal.com_2025-02-02_04-04-31-before.html"],
