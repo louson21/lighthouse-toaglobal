@@ -1,42 +1,7 @@
 { "directories": {"results": {
-    "au--resource--talent-insights-report": {
-      "url": "https://toaglobal.com/au/resource/talent-insights-report/",
-      "files": ["results/au--resource--talent-insights-report/toaglobal.com_2025-02-07_17-35-06-mobile-before.html","results/au--resource--talent-insights-report/toaglobal.com_2025-02-07_18-39-04-mobile-after.html"],
-      "subdirectories": []
-    },
-    "au--blog--9-accounting-tasks-to-automate-for-improved-efficiency": {
-      "url": "https://toaglobal.com/au/blog/9-accounting-tasks-to-automate-for-improved-efficiency/",
-      "files": ["results/au--blog--9-accounting-tasks-to-automate-for-improved-efficiency/toaglobal.com_2025-02-05_14-09-01-after.html","results/au--blog--9-accounting-tasks-to-automate-for-improved-efficiency/toaglobal.com_2025-02-02_04-04-31-before.html"],
-      "subdirectories": []
-    },
-    "au--resource--recruitment-guide": {
-      "url": "https://toaglobal.com/au/resource/recruitment-guide/",
-      "files": ["results/au--resource--recruitment-guide/toaglobal.com_2025-02-07_00-15-39-mobile-after.html","results/au--resource--recruitment-guide/toaglobal.com_2025-02-06_23-57-11-mobile-before.html"],
-      "subdirectories": []
-    },
-    "au--blog--seo-for-accountants-a-compendium-of-21-proven-strategies-to-grow-your-practice": {
-      "url": "https://toaglobal.com/au/blog/seo-for-accountants-a-compendium-of-21-proven-strategies-to-grow-your-practice/",
-      "files": ["results/au--blog--seo-for-accountants-a-compendium-of-21-proven-strategies-to-grow-your-practice/toaglobal.com_2025-02-02_03-42-49-after.html"],
-      "subdirectories": []
-    },
-    "blog--seo-for-accountants-a-compendium-of-21-proven-strategies-to-grow-your-practice": {
-      "url": "https://toaglobal.com/blog/seo-for-accountants-a-compendium-of-21-proven-strategies-to-grow-your-practice/",
-      "files": ["results/blog--seo-for-accountants-a-compendium-of-21-proven-strategies-to-grow-your-practice/toaglobal.com_2025-02-02_03-41-29-after.html"],
-      "subdirectories": []
-    },
-    "resource--talent-insights-report": {
-      "url": "https://toaglobal.com/resource/blog/talent-insights-report/",
-      "files": ["results/resource--talent-insights-report/toaglobal.com_2025-02-08_10-39-00-mobile-before.html","results/resource--talent-insights-report/toaglobal.com_2025-02-08_10-52-46-mobile-after.html"],
-      "subdirectories": []
-    },
-    "au--blog--accounting-firm-names-a-step-by-step-guide-for-seo-success": {
-      "url": "https://toaglobal.com/au/blog/accounting-firm-names-a-step-by-step-guide-for-seo-success/",
-      "files": ["results/au--blog--accounting-firm-names-a-step-by-step-guide-for-seo-success/toaglobal.com_2025-02-02_03-17-45-after.html"],
-      "subdirectories": []
-    },
-    "au--resource--retain-and-grow-top-accounting-talent": {
-      "url": "https://toaglobal.com/au/resource/retain-and-grow-top-accounting-talent/",
-      "files": ["results/au--resource--retain-and-grow-top-accounting-talent/toaglobal.com_2025-02-06_16-40-11-mobile-after.html","results/au--resource--retain-and-grow-top-accounting-talent/toaglobal.com_2025-02-02_16-37-39-before.html"],
+    "resource--seo-for-accountants-11-seo-tactics-to-grow-your-firms-online-presence-in-2025": {
+      "url": "https://toaglobal.com/resource/blog/seo-for-accountants-11-seo-tactics-to-grow-your-firms-online-presence-in-2025/",
+      "files": ["results/resource--seo-for-accountants-11-seo-tactics-to-grow-your-firms-online-presence-in-2025/toaglobal.com_2025-03-30_19-46-04-mobile-before.html"],
       "subdirectories": []
     },
     "blog--essential-guide-to-the-sarbanes-oxley-act-sox": {
@@ -44,9 +9,34 @@
       "files": ["results/blog--essential-guide-to-the-sarbanes-oxley-act-sox/toaglobal.com_2025-02-02_16-11-58-after.html"],
       "subdirectories": []
     },
+    "resource--strategy": {
+      "url": "https://toaglobal.com/resource/blog/strategy/",
+      "files": ["results/resource--strategy/toaglobal.com_2025-02-08_11-02-24-mobile-before.html"],
+      "subdirectories": []
+    },
     "blog--ai-in-accounting-pros-and-cons-of-using-chatgpt": {
       "url": "https://toaglobal.com/blog/ai-in-accounting-pros-and-cons-of-using-chatgpt/",
-      "files": ["results/blog--ai-in-accounting-pros-and-cons-of-using-chatgpt/toaglobal.com_2025-02-02_03-12-09.html","results/blog--ai-in-accounting-pros-and-cons-of-using-chatgpt/toaglobal.com_2025-02-01_12-55-29.html"],
+      "files": ["results/blog--ai-in-accounting-pros-and-cons-of-using-chatgpt/toaglobal.com_2025-02-01_12-55-29.html","results/blog--ai-in-accounting-pros-and-cons-of-using-chatgpt/toaglobal.com_2025-02-02_03-12-09.html"],
+      "subdirectories": []
+    },
+    "resource--scale-and-grow-accounting-firm": {
+      "url": "https://toaglobal.com/resource/blog/scale-and-grow-accounting-firm/",
+      "files": ["results/resource--scale-and-grow-accounting-firm/toaglobal.com_2025-02-06_22-47-21-mobile-after.html","results/resource--scale-and-grow-accounting-firm/toaglobal.com_2025-02-06_16-59-55-mobile-before.html"],
+      "subdirectories": []
+    },
+    "au--resource--retain-and-grow-top-accounting-talent": {
+      "url": "https://toaglobal.com/au/resource/retain-and-grow-top-accounting-talent/",
+      "files": ["results/au--resource--retain-and-grow-top-accounting-talent/toaglobal.com_2025-02-06_16-40-11-mobile-after.html","results/au--resource--retain-and-grow-top-accounting-talent/toaglobal.com_2025-02-02_16-37-39-before.html"],
+      "subdirectories": []
+    },
+    "resource--remote-team": {
+      "url": "https://toaglobal.com/resource/blog/remote-team/",
+      "files": ["results/resource--remote-team/toaglobal.com_2025-02-06_02-44-48-mobile-after.html","results/resource--remote-team/toaglobal.com_2025-02-05_23-15-40-mobile-before.html"],
+      "subdirectories": []
+    },
+    "resource--talent-insights-report": {
+      "url": "https://toaglobal.com/resource/blog/talent-insights-report/",
+      "files": ["results/resource--talent-insights-report/toaglobal.com_2025-02-08_10-52-46-mobile-after.html","results/resource--talent-insights-report/toaglobal.com_2025-02-08_10-39-00-mobile-before.html"],
       "subdirectories": []
     },
     "au--resource--delegate-and-drive-your-firms-growth-with-a-global-team": {
@@ -54,19 +44,14 @@
       "files": ["results/au--resource--delegate-and-drive-your-firms-growth-with-a-global-team/toaglobal.com_2025-02-08_12-31-29-mobile-before.html","results/au--resource--delegate-and-drive-your-firms-growth-with-a-global-team/toaglobal.com_2025-02-08_13-25-54-mobile-after.html"],
       "subdirectories": []
     },
-    "resource--strategy": {
-      "url": "https://toaglobal.com/resource/blog/strategy/",
-      "files": ["results/resource--strategy/toaglobal.com_2025-02-08_11-02-24-mobile-before.html"],
+    "au--blog--accounting-firm-names-a-step-by-step-guide-for-seo-success": {
+      "url": "https://toaglobal.com/au/blog/accounting-firm-names-a-step-by-step-guide-for-seo-success/",
+      "files": ["results/au--blog--accounting-firm-names-a-step-by-step-guide-for-seo-success/toaglobal.com_2025-02-02_03-17-45-after.html"],
       "subdirectories": []
     },
-    "resource--checklist": {
-      "url": "https://toaglobal.com/resource/blog/checklist/",
-      "files": ["results/resource--checklist/toaglobal.com_2025-02-08_10-34-43-mobile-after.html","results/resource--checklist/toaglobal.com_2025-02-07_18-46-37-mobile-before.html"],
-      "subdirectories": []
-    },
-    "resource--remote-team": {
-      "url": "https://toaglobal.com/resource/blog/remote-team/",
-      "files": ["results/resource--remote-team/toaglobal.com_2025-02-05_23-15-40-mobile-before.html","results/resource--remote-team/toaglobal.com_2025-02-06_02-44-48-mobile-after.html"],
+    "au--resource--talent-insights-report": {
+      "url": "https://toaglobal.com/au/resource/talent-insights-report/",
+      "files": ["results/au--resource--talent-insights-report/toaglobal.com_2025-02-07_18-39-04-mobile-after.html","results/au--resource--talent-insights-report/toaglobal.com_2025-02-07_17-35-06-mobile-before.html"],
       "subdirectories": []
     },
     "au--blog--accounting-firm-positioning": {
@@ -76,12 +61,32 @@
     },
     "resource--strategy-and-consultation": {
       "url": "https://toaglobal.com/resource/blog/strategy-and-consultation/",
-      "files": ["results/resource--strategy-and-consultation/toaglobal.com_2025-02-07_16-27-47-mobile-after.html","results/resource--strategy-and-consultation/toaglobal.com_2025-02-07_14-21-43-mobile-before.html"],
+      "files": ["results/resource--strategy-and-consultation/toaglobal.com_2025-02-07_14-21-43-mobile-before.html","results/resource--strategy-and-consultation/toaglobal.com_2025-02-07_16-27-47-mobile-after.html"],
       "subdirectories": []
     },
-    "resource--scale-and-grow-accounting-firm": {
-      "url": "https://toaglobal.com/resource/blog/scale-and-grow-accounting-firm/",
-      "files": ["results/resource--scale-and-grow-accounting-firm/toaglobal.com_2025-02-06_22-47-21-mobile-after.html","results/resource--scale-and-grow-accounting-firm/toaglobal.com_2025-02-06_16-59-55-mobile-before.html"],
+    "au--blog--9-accounting-tasks-to-automate-for-improved-efficiency": {
+      "url": "https://toaglobal.com/au/blog/9-accounting-tasks-to-automate-for-improved-efficiency/",
+      "files": ["results/au--blog--9-accounting-tasks-to-automate-for-improved-efficiency/toaglobal.com_2025-02-02_04-04-31-before.html","results/au--blog--9-accounting-tasks-to-automate-for-improved-efficiency/toaglobal.com_2025-02-05_14-09-01-after.html"],
+      "subdirectories": []
+    },
+    "au--resource--recruitment-guide": {
+      "url": "https://toaglobal.com/au/resource/recruitment-guide/",
+      "files": ["results/au--resource--recruitment-guide/toaglobal.com_2025-02-07_00-15-39-mobile-after.html","results/au--resource--recruitment-guide/toaglobal.com_2025-02-06_23-57-11-mobile-before.html"],
+      "subdirectories": []
+    },
+    "blog--seo-for-accountants-a-compendium-of-21-proven-strategies-to-grow-your-practice": {
+      "url": "https://toaglobal.com/blog/seo-for-accountants-a-compendium-of-21-proven-strategies-to-grow-your-practice/",
+      "files": ["results/blog--seo-for-accountants-a-compendium-of-21-proven-strategies-to-grow-your-practice/toaglobal.com_2025-02-02_03-41-29-after.html"],
+      "subdirectories": []
+    },
+    "au--blog--seo-for-accountants-a-compendium-of-21-proven-strategies-to-grow-your-practice": {
+      "url": "https://toaglobal.com/au/blog/seo-for-accountants-a-compendium-of-21-proven-strategies-to-grow-your-practice/",
+      "files": ["results/au--blog--seo-for-accountants-a-compendium-of-21-proven-strategies-to-grow-your-practice/toaglobal.com_2025-02-02_03-42-49-after.html"],
+      "subdirectories": []
+    },
+    "resource--checklist": {
+      "url": "https://toaglobal.com/resource/blog/checklist/",
+      "files": ["results/resource--checklist/toaglobal.com_2025-02-08_10-34-43-mobile-after.html","results/resource--checklist/toaglobal.com_2025-02-07_18-46-37-mobile-before.html"],
       "subdirectories": []
     }
   }}}
